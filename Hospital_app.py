@@ -212,7 +212,7 @@ with st.form("triage_form"):
 #--form submission--
 if submitted:
 #1. Build Patient Database
-  patient = pd.Dataframe([{
+  patient = pd.DataFrame([{
     'age'             : age,
     'gender'          : gender_map.get(gender,0),
     'fever'           : int(fever),
