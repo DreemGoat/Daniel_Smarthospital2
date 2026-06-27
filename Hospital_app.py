@@ -168,6 +168,6 @@ patient_scaled[cols_to_scale] = scaler.transform(patient[cols_to_scale])
 
 #Make Prediction
 pred = model.predict(patient_scaled[features])[0]
-proba= model.predict(patient_scaled)[features])[0]
+proba= model.predict(patient_scaled[features])[0]
 dept_name = dept_map_inv[pred]
 confidence = proba[pred] * 100
