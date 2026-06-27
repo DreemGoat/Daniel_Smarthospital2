@@ -233,24 +233,24 @@ if submitted:
     'chief_complaint' : cc_map.get(chief_complaint, 9)
   }])
 
-    #2Scale numerical values
-    patient_scaled = patient.copy()
-    patient_scaled[cols_to_scale] = scaler.transform(patient[cols_to_scale])
+#2Scale numerical values
+patient_scaled = patient.copy()
+patient_scaled[cols_to_scale] = scaler.transform(patient[cols_to_scale])
     
-    #Make Prediction
-    pred = model.predict(patient_scaled[features])[0]
-    proba= model.predict(patient_scaled[features])[0]
-    dept_name = dept_map_inv[pred]
-    confidence = proba[pred] * 100
-    info       = DEPT_INFO[dept_name]
+#Make Prediction
+pred = model.predict(patient_scaled[features])[0]
+proba= model.predict(patient_scaled[features])[0]
+dept_name = dept_map_inv[pred]
+confidence = proba[pred] * 100
+info       = DEPT_INFO[dept_name]
     
-    st.markdown("---")
-    st.markdown("""
-    <div style="font-size:22px;font-weight:700;color:#111827;margin-bottom:4px;">AI Recommendation</div>
-    <div style="font-size:14px;color:#6b7280;margin-bottom:1.5rem;">Based on the information you provided</div>
-    """, unsafe_allow_html=True)
+st.markdown("---")
+st.markdown("""
+<div style="font-size:22px;font-weight:700;color:#111827;margin-bottom:4px;">AI Recommendation</div>
+<div style="font-size:14px;color:#6b7280;margin-bottom:1.5rem;">Based on the information you provided</div>
+""", unsafe_allow_html=True)
 
-    res_col, prob_col = st.columns([3, 2])
+res_col, prob_col = st.columns([3, 2])
 
     with res_col:
         steps_html = ''.join(
