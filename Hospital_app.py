@@ -169,9 +169,9 @@ with st.form("triage_form"):
   """, unsafe_allow_html=True)
   
   col_temp, col_hr = st.columns(2)
-  with col_cc:
+  with col_temp:
     temperature_level = st.selectbox("Temperature", options=list(temp_map.keys()), index=1)
-  with col_dur:
+  with col_hr:
     heart_rate_level = st.selectbox("Heart Rate", options=list(hr_map.keys()), index=1)
   
   #Section 4 - Medical History
@@ -238,9 +238,9 @@ patient_scaled = patient.copy()
 patient_scaled[cols_to_scale] = scaler.transform(patient[cols_to_scale])
     
 #Make Prediction
-pred = model.predict(patient_scaled[features])[0]
-proba= model.predict(patient_scaled[features])[0]
-dept_name = dept_map_inv[pred]
+pred       = model.predict(patient_scaled[features])[0]
+proba      = model.predict_proba(patient_scaled[features])[0]
+dept_name  = dept_map_inv[pred]
 confidence = proba[pred] * 100
 info       = DEPT_INFO[dept_name]
     
