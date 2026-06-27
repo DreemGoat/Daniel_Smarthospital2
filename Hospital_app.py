@@ -150,7 +150,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-col_cc, col_dur = st.column(2)
+col_cc, col_dur = st.columns(2)
 with col_cc:
   chief_complaint = st.selectbox("Chief Complaint", options=list(cc_map.keys()))
 with col_dur:
@@ -168,7 +168,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-col_temp, col_hr = st.column(2)
+col_temp, col_hr = st.columns(2)
 with col_cc:
   temperature_level = st.selectbox("Temperature", options=list(temp_map.keys()), index=1)
 with col_dur:
